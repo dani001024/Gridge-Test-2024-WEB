@@ -49,3 +49,32 @@ export const LoginButton = styled.div`
   text-align: center;
   cursor: pointer;
 `;
+
+export const Container = styled.div`
+  display :flex;
+  flex-direction : column;
+  align-items:center;
+  gap:6px;
+  width : 40vw;
+  p{
+    font-size:1.3333em;
+    color:#7F7F7F;
+    font-weigth:500;
+  }
+
+`
+export const AppContainer = styled.div`
+display:flex;
+`
+export const Img = styled.img`
+width : 40vw;
+max-width: 500px;
+`
+export const ImgWrapper = styled.div`
+display:flex;
+gap:10px;
+justify-content:center;
+img{
+  width : 29%
+}
+`
