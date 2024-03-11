@@ -3,13 +3,19 @@ import styled from "styled-components";
 export const LoginBox = styled.div`
     border : 1px solid #CCCCCC;
     width : 416px;
-    //height : 559px;
     display :flex;
     flex-direction:column;
     align-items:center;
     gap:10px;
     padding-top: 70px;
     padding-bottom: 40px;
+    background-color:white;
+    a{
+        text-decoration:none;
+        color:#7F7F7F;
+        font-weight : 400;
+        font-size:1.1667em;
+    }
 `;
 export const Img = styled.img`
 width : 52%;
