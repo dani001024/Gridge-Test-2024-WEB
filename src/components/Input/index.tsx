@@ -22,6 +22,11 @@ const Input = (props: InputProps) => {
   const handleShowPwChecked = () => {
     pwType === "password" ? setPwType("text") :setPwType("password") ;
   };
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+    }
+  };
   return (
     <>
       <InputBox>
@@ -32,6 +37,7 @@ const Input = (props: InputProps) => {
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          onKeyDown={handleKeyDown}
         />
         
         {value && ox !== undefined &&
@@ -40,7 +46,7 @@ const Input = (props: InputProps) => {
           ) : (
             <OxImg src={incorrect} alt="ox" />
           ))}
-          {name =='password'&&<PwCheckBox onClick={handleShowPwChecked}>비밀번호표시</PwCheckBox>}
+          {value&&name =='password'&&<PwCheckBox onClick={handleShowPwChecked}>비밀번호표시</PwCheckBox>}
       </InputBox>
     </>
   );

@@ -17,7 +17,7 @@ export const InputBox = styled.div`
     display : flex;
     align-items: center;
     border : 1px solid #B2B2B2;
-    width : 100%;
+    width : 77%;
     border-radius : 30px;
     height  : 40px;
     padding : 10px, 14px, 10px, 14px;
