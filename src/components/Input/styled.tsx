@@ -5,10 +5,12 @@ export const StyledInput = styled.input`
     width : 70%;
     height : 24px;
     outline: none;
+    font-weight: 500;
 `
 export const Img = styled.img`
     height  : 20px;
     margin :0 8px 0 15px;
+    right: 20px;
 
 `
 export const InputBox = styled.div`
@@ -19,5 +21,7 @@ export const InputBox = styled.div`
     border-radius : 30px;
     height  : 40px;
     padding : 10px, 14px, 10px, 14px;
+    min-width :300px;
+    position:relative;
     
 `;
