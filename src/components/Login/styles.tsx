@@ -29,9 +29,8 @@ export const InputWrapper = styled.div`
 
 `
 export const PwCheckBox = styled.div`
-    position : absolute;
+    position : relative;
     width : 80px;
-    top : 12px;
     right : 0px;
     font-weight :600;
 `

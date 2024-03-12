@@ -18,5 +18,6 @@ export const Box = styled.div`
     a{
         color:#2E90FA;
         text-decoration:none;
+        font-family:SF-Pro-Display;
     }
 `;

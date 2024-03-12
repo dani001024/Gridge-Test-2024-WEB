@@ -5,7 +5,7 @@ export const Button = styled.div`
   background-color: #F8D706;
   width: 320px;
   height: 44px;
-  font-family :SF-Pro-Display;
+  //font-family :SF-Pro-Display;
   font-size: 16px;
   font-weight: 800;
   border-radius: 30px;
