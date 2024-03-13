@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Img, SelectWrapper,StyledP,Title,Wrapper,StyledH4 } from "./styles";
 import cake from "../../assets/cake.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DropBox from "../DropBox";
 import Button from "../Button";
 import { useRecoilValue } from "recoil";
 import { birthdayState } from "../../recoil/singup";
 
 const BirthdaySelect = () => {
+  const navigate = useNavigate();
   const currentValue = useRecoilValue(birthdayState);
   const [isActive, setIsActive] = useState(false);
   const currentYear = new Date().getFullYear();
@@ -23,7 +24,9 @@ const BirthdaySelect = () => {
     console.log(currentValue);
   }, [currentValue]);
 
-  const onClickBtn = () => {};
+  const onClickBtn = () => {
+    navigate('/signup3');
+  };
   return (
     <>
       <Wrapper>
@@ -32,9 +35,9 @@ const BirthdaySelect = () => {
         <StyledP>공개 프로필에 포함되지 않습니다.</StyledP>
         <Link to={"/infom"}>왜 생일 정보를 입력해야 하나요?</Link>
         <SelectWrapper>
+          <DropBox name={"month"} list={BIRTHDAY_MONTH_LIST}></DropBox>
           <DropBox name={"day"} list={BIRTHDAY_DAY_LIST}></DropBox>
           <DropBox name={"year"} list={BIRTHDAY_YEAR_LIST}></DropBox>
-          <DropBox name={"month"} list={BIRTHDAY_MONTH_LIST}></DropBox>
         </SelectWrapper>
         <StyledP>태어난 날짜를 입력해야 합니다.</StyledP>
         <Button onClick={onClickBtn} isActive={isActive}>
