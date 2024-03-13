@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
-export const Wrpper = styled.div`
+export const Wrapper = styled.div`
     display:flex;
     flex-direction : column;
     align-items :center;
     gap : 10px;
     border : 1px solid #CCCCCC;
-    width : 416px;
+    width : 100%;
+    background-color:white;
 `
 export const Img = styled.img`
     width : 24px;
@@ -22,7 +23,7 @@ export const OxImg = styled.img`
     width : 24px;
     height:24px;
     position : relative;
-    right: 5px;
+    right: 4%;
 
 `
 export const StyledP = styled.p`

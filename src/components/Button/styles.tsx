@@ -10,4 +10,6 @@ export const StyledButton = styled.button<ButtonProps>`
     border : none;
     border-radius : 30px;
     font-weight : 600;
+    font-size : 16px;
+    margin-bottom : 5px;
 `

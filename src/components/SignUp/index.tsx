@@ -6,7 +6,7 @@ import lock from "../../assets/lock.png";
 import mail from "../../assets/mail.png";
 import { useRecoilState } from "recoil";
 import { singUpState } from "../../recoil/singup";
-import {Wrpper,StyledP} from "./styled";
+import {Wrapper,StyledP} from "./styled";
 import Button from "../Button";
 import { Img } from "../Login/styles";
 import KakaoLogin from "../KakaoLogin";
@@ -24,7 +24,7 @@ const SingUp = () => {
     }
 
     setIsActive(
-      validatePhoneNumber(signupInfo.contactInfo) &&
+        validatePhoneNumber(signupInfo.contactInfo) &&
         validateName(signupInfo.name) &&
         validateID(signupInfo.id) &&
         validatePassword(signupInfo.password)
@@ -75,7 +75,7 @@ const SingUp = () => {
   }
 
   return (
-    <Wrpper>
+    <Wrapper>
       <Img src={logo} alt="로고"/>
       <p>친구들과 함께 여행 이야기를 공유하고 보세요</p>
       <KakaoLogin/>
@@ -120,7 +120,7 @@ const SingUp = () => {
       {signupInfo.contactInfo&&!validatePhoneNumber(signupInfo.contactInfo)&&<StyledP>휴대폰 번호가 정확하지 않습니다. 국가번호를 <br/> 포함하여 전체 전화번호를 입력해주세요 </StyledP>}
       {signupInfo.id&&validatePhoneNumber(signupInfo.contactInfo)&&!validateID(signupInfo.id)&&<StyledP>사용자 이름에는 문자, 숫자 밑줄 및 마침표만<br/>사용할 수 있습니다.</StyledP>}
       {/* <StyledP>사용할 수 없는 사용자 이름입니다.<br/>다른 이름을 사용하세요</StyledP> */}
-    </Wrpper>
+    </Wrapper>
   );
 };
 

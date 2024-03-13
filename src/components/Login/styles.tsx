@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const LoginBox = styled.div`
     border : 1px solid #CCCCCC;
     width : 416px;
+    width : 35vw;
     display :flex;
     flex-direction:column;
     align-items:center;
@@ -31,7 +32,7 @@ export const InputWrapper = styled.div`
 export const PwCheckBox = styled.div`
     position : relative;
     width : 80px;
-    right : 0px;
+    right : 1%;
     font-weight :600;
 `
 export const Notice = styled.p`
