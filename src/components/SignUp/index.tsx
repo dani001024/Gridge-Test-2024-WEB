@@ -5,7 +5,7 @@ import person from "../../assets/person.png";
 import lock from "../../assets/lock.png";
 import mail from "../../assets/mail.png";
 import { useRecoilState } from "recoil";
-import { singUpState } from "../../recoil/singup";
+import { signupState } from "../../recoil/singup";
 import {Wrapper,StyledP} from "./styled";
 import Button from "../Button";
 import { Img } from "../Login/styles";
@@ -13,8 +13,8 @@ import KakaoLogin from "../KakaoLogin";
 import logo from "../../assets/mainlogo.png"
 
 
-const SingUp = () => {
-  const [signupInfo, setSignUpInfo] = useRecoilState(singUpState);
+const signup = () => {
+  const [signupInfo, setSignUpInfo] = useRecoilState(signupState);
   const [isActive,setIsActive] = useState(false);
 
   useEffect(() => {
@@ -124,4 +124,4 @@ const SingUp = () => {
   );
 };
 
-export default SingUp;
+export default signup;
