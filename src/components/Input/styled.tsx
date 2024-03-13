@@ -17,11 +17,11 @@ export const InputBox = styled.div`
     display : flex;
     align-items: center;
     border : 1px solid #B2B2B2;
-    width : 77%;
+    width : 80%;
     border-radius : 30px;
     height  : 40px;
     padding : 10px, 14px, 10px, 14px;
-    min-width :300px;
+    min-width :220px;
     position:relative;
     
 `;
