@@ -55,7 +55,8 @@ export const Container = styled.div`
   flex-direction : column;
   align-items:center;
   gap:6px;
-  width : 40vw;
+  width : 35vw;
+  max-width : 416px;
   p{
     font-size:1.3333em;
     color:#7F7F7F;
@@ -64,14 +65,19 @@ export const Container = styled.div`
 
 `
 export const AppContainer = styled.div`
+//background-color:black;
 display:flex;
+padding:1vw 0 ;
 align-items:center;
 width : 100%;
-height : 100vh;
+height : 98vh;
+gap : 20px;
+
 `
 export const Img = styled.img`
-width : 40vw;
+width : 35vw;
 max-width: 500px;
+
 `
 export const ImgWrapper = styled.div`
 display:flex;
