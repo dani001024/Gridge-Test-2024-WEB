@@ -7,20 +7,31 @@ import lock from "../../assets/lock.png";
 import Button from "../Button";
 import KakaoLogin from "../KakaoLogin";
 import { Link } from "react-router-dom";
+import { authSignIn } from "../../apis/auth";
+import { userProfile } from "../../apis/User";
 
 interface ValueType {
-  id: string;
+  loginId: string;
   password: string;
 }
 
 const Login = () => {
   const [values, setValues] = useState<ValueType>({
-    id: "",
+    loginId: "",
     password: "",
   });
-  const onClickLoginButton = () => {
-    //api연결
-  };
+  const onClickLoginButton = async () => {
+    console.log(values);
+    try {
+        const response = await authSignIn(values);
+        console.log('토큰:', response.result.jwt);
+        localStorage.setItem('jwt', response.result.jwt)
+        // 로그인 성공 시 처리 로직
+    } catch (error) {
+        console.error('Error while signing in:', error);
+        // 에러 처리 로직
+    }
+};
   const isUserIdValid = (Id: string, Pw: string) => {
     return (
       Id.length >= 1 && Id.length <= 20 && Pw.length >= 6 && Pw.length <= 20
@@ -39,16 +50,18 @@ const Login = () => {
     }));
   };
 
+
+
   return (
     <>
       <LoginBox>
         <Img src={Logo} alt="mainLogo" />
           <Input
-            name="id"
+            name="loginId"
             placeholder="전화번호, 사용자 이름 또는 이메일"
             type="email"
             image={mail}
-            value={values.id}
+            value={values.loginId}
             onChange={handleChange}
           ></Input>
           <Input
@@ -60,7 +73,7 @@ const Login = () => {
             onChange={handleChange}
           ></Input>
         <Button
-          isActive={isUserIdValid(values.id, values.password)}
+          isActive={isUserIdValid(values.loginId, values.password)}
           onClick={onClickLoginButton}
         >
           로그인

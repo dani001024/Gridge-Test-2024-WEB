@@ -11,11 +11,15 @@ import Button from "../Button";
 import { Img } from "../Login/styles";
 import KakaoLogin from "../KakaoLogin";
 import logo from "../../assets/mainlogo.png"
+import axiosInstance from "../../apis/User";
+import { useNavigate } from "react-router-dom";
 
 
 const signup = () => {
   const [signupInfo, setSignUpInfo] = useRecoilState(signupState);
   const [isActive,setIsActive] = useState(false);
+  const [isExist,setIsExist] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedSignupInfo = localStorage.getItem("signupInfo");
@@ -23,14 +27,16 @@ const signup = () => {
       setSignUpInfo(JSON.parse(savedSignupInfo));
     }
 
-    setIsActive(
-        validatePhoneNumber(signupInfo.contactInfo) &&
-        validateName(signupInfo.name) &&
-        validateID(signupInfo.id) &&
-        validatePassword(signupInfo.password)
-    );
-
   }, [setSignUpInfo]);
+  useEffect(() => {
+    localStorage.setItem("signupInfo", JSON.stringify(signupInfo));
+    setIsActive(
+      validatePhoneNumber(signupInfo.contactInfo) &&
+      validateName(signupInfo.name) &&
+      validateID(signupInfo.id) &&
+      validatePassword(signupInfo.password)
+    );
+  }, [signupInfo]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let { name, value } = event.target;
@@ -42,15 +48,9 @@ const signup = () => {
       ...prevState,
       [name]: value,
     }));
-    localStorage.setItem("signupInfo", JSON.stringify(signupInfo));
-    validatePhoneNumber(signupInfo.contactInfo);
-    validateName(signupInfo.name);
-    validateID(signupInfo.id);
-    validatePassword(signupInfo.password);
   };
 
   const validatePhoneNumber = (contactInfo: string) => {
-    console.log(/^\d{11}$/.test(contactInfo),'전화번호');
     return /^\d{11}$/.test(contactInfo);
   };
 
@@ -66,12 +66,20 @@ const signup = () => {
 
   // 비밀번호 검사
   const validatePassword = (password: string) => {
-    console.log('비밀번호',password.length >= 6)
-    return password.length >= 6;
+    return  /[a-zA-Z]/.test(password)&&password.length >= 7;
   };
 
   const onClickButton = () =>{
-    //api
+    axiosInstance
+    .get(`/users?loginId=${signupInfo.id}`)
+    .then((res) =>{
+      const isExist = res.data.result.isExist;
+      setIsExist(isExist);
+      if(!isExist){
+        navigate('/signup2');
+      }
+    })
+    .catch((err) => console.log(err));
   }
 
   return (
@@ -81,7 +89,7 @@ const signup = () => {
       <KakaoLogin/>
       <p>or</p>
       <Input
-        type="text"
+        type="phone"
         placeholder="전화번호,사용자 이름 또는 이메일"
         image={mail}
         value={signupInfo.contactInfo}
@@ -105,7 +113,7 @@ const signup = () => {
         value={signupInfo.id}
         name="id"
         onChange={handleChange}
-        ox = {validateID(signupInfo.id)}
+        ox = {isExist?!isExist&&validateID(signupInfo.id):validateID(signupInfo.id)}
       ></Input>
       <Input
         type={"password"}
@@ -119,7 +127,7 @@ const signup = () => {
       <Button onClick={onClickButton} isActive={isActive}>가입</Button>
       {signupInfo.contactInfo&&!validatePhoneNumber(signupInfo.contactInfo)&&<StyledP>휴대폰 번호가 정확하지 않습니다. 국가번호를 <br/> 포함하여 전체 전화번호를 입력해주세요 </StyledP>}
       {signupInfo.id&&validatePhoneNumber(signupInfo.contactInfo)&&!validateID(signupInfo.id)&&<StyledP>사용자 이름에는 문자, 숫자 밑줄 및 마침표만<br/>사용할 수 있습니다.</StyledP>}
-      {/* <StyledP>사용할 수 없는 사용자 이름입니다.<br/>다른 이름을 사용하세요</StyledP> */}
+      {isExist&&<StyledP>사용할 수 없는 사용자 이름입니다.<br/>다른 이름을 사용하세요</StyledP>}
     </Wrapper>
   );
 };
