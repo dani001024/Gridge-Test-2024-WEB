@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const LoginBox = styled.div`
     border : 1px solid #CCCCCC;
-    width : 416px;
-    width : 35vw;
+    width : 100%;
     display :flex;
     flex-direction:column;
     align-items:center;

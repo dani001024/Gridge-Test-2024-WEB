@@ -6,15 +6,19 @@ import { AppContainer,Container,Img } from "./styles";
 import Download from "../../components/Download";
 
 const LoginPage = () =>{
-return(
-    <AppContainer>
-    <Img src={home} alt="첫화면이미지"/>
+return (
+  <AppContainer>
+    <Img src={home} alt="첫화면이미지" />
     <Container>
-        <Login/>
-        <PageLink messege="계정이 없으신가요?"link="singup" page="가입하기"></PageLink>
-    <Download/>
+      <Login />
+      <PageLink
+        messege="계정이 없으신가요?"
+        link="signup"
+        page="가입하기"
+      ></PageLink>
+      <Download />
     </Container>
-    </AppContainer>
-)
+  </AppContainer>
+);
 }
 export default LoginPage;

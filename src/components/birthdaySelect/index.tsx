@@ -8,7 +8,7 @@ import { useRecoilValue } from "recoil";
 import { birthdayState } from "../../recoil/singup";
 
 const BirthdaySelect = () => {
-    const currentValue = useRecoilValue(birthdayState);
+  const currentValue = useRecoilValue(birthdayState);
   const [isActive, setIsActive] = useState(false);
   const currentYear = new Date().getFullYear();
   const BIRTHDAY_YEAR_LIST = Array.from(

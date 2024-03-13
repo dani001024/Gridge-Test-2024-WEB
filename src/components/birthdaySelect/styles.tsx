@@ -27,7 +27,7 @@ export const Wrapper = styled.div`
     align-items :center;
     gap : 10px;
     border : 1px solid #CCCCCC;
-    width : 35vw;
+    width : 100%;
     a{
         text-decoration:none;
         color:#2E90FA;
