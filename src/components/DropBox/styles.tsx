@@ -11,6 +11,9 @@ export const Wrapper = styled.div`
   border: 1px solid #b2b2b2;
   border-radius: 8px;
   padding-left: 10px;
+  @media (max-width: 850px) {
+    width : 100%;
+  }
 `;
 export const Icon = styled.img`
   position: absolute;

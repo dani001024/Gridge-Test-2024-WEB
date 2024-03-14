@@ -62,17 +62,22 @@ export const Container = styled.div`
     color:#7F7F7F;
     font-weigth:500;
   }
+  @media (max-width: 1000px) {
+    width : 55%;
+  }
 
 `
 export const AppContainer = styled.div`
-//background-color:black;
+background-color:black;
 display:flex;
 padding:1vw 0 ;
 align-items:center;
 width : 100%;
 height : 98vh;
 gap : 20px;
-
+@media (max-width: 1000px) {
+  width : 80vw;
+}
 `
 export const Img = styled.img`
 width : 35vw;

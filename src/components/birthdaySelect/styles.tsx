@@ -8,6 +8,9 @@ export const Img = styled.img`
 export const SelectWrapper = styled.div`
 display : flex;
 gap: 10px;
+@media (max-width: 850px) {
+    width : 100%;
+  }
 `;
 export const StyledP = styled.p`
 color:#7F7F7F;
