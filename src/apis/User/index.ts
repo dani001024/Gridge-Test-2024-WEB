@@ -1,41 +1,27 @@
-import axios, { AxiosInstance } from "axios";
-import request from "../core";
+import { tokenAxiosInstance,defaultAxiosInstance } from "../utils";
 
-export const axiosInstance: AxiosInstance = axios.create({
-    baseURL:`https://api-sns.gridge-test.com`,
-    timeout: 5000,
-  });
-  axiosInstance.interceptors.request.use(
-    (config) => {
-      //요청 보내기 전에 수행 로직
-      return config;
-    },
-    (err) => {
-      //요청 에러 시 수행 로직
-      return Promise.reject(err);
-    }
-  );
-  
-  //응답 인터셉터
-  axiosInstance.interceptors.response.use(
-    (response) => {
-      //응답에 대한 로직
-    //   const res = response.data;
-      const res = response;
-      return res;
-    },
-    (err) => {
-      return Promise.reject(err);
-    }
-  );
-  export default axiosInstance;
-  
-  export const userProfile  = async () => {
+//특정 사용자의 프로필 조회
+  export const userProfile = async (id:string) => {
     try {
-        const { data } = await request.post('auth/jwt');
+        const { data } = await tokenAxiosInstance.get(`users/${id}/profile`);
+        console.log('유저프로필',data)
         return data;
     } catch (error) {
         console.error('Error while signing up:', error);
-        throw error;
+        throw error; // Optional: Re-throw the error for handling in the component
+    }
+};
+
+//중복 ID 조회
+export const users  = async (id: string) => {
+
+    try {
+        const { data } = await defaultAxiosInstance.get(`/users?loginId=${id}`)
+        console.log('요청 성공',data)
+        return data;
+    } catch (error) {
+        console.error('Error while signing up:', error);
+        console.log('실패')
+        throw error; // Optional: Re-throw the error for handling in the component
     }
 };

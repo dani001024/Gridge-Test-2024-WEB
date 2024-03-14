@@ -11,7 +11,7 @@ import Button from "../Button";
 import { Img } from "../Login/styles";
 import KakaoLogin from "../KakaoLogin";
 import logo from "../../assets/mainlogo.png"
-import axiosInstance from "../../apis/User";
+import{ users } from "../../apis/User";
 import { useNavigate } from "react-router-dom";
 
 
@@ -69,17 +69,21 @@ const signup = () => {
     return  /[a-zA-Z]/.test(password)&&password.length >= 7;
   };
 
-  const onClickButton = () =>{
-    axiosInstance
-    .get(`/users?loginId=${signupInfo.id}`)
-    .then((res) =>{
-      const isExist = res.data.result.isExist;
+  const onClickButton = async() =>{
+    try {
+      const response = await users(`${signupInfo.id}`);
+      console.log(response.result.isExist);
+      const isExist = response.result.isExist;
       setIsExist(isExist);
       if(!isExist){
         navigate('/signup2');
       }
-    })
-    .catch((err) => console.log(err));
+
+      // localStorage.setItem('jwt', response.result.jwt)
+  } catch (error) {
+      console.error('Error while signing in:', error);
+      // 에러 처리 로직
+  }
   }
 
   return (

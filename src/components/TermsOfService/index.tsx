@@ -5,7 +5,7 @@ import Button from "../Button";
 import { useRecoilValue } from "recoil";
 import { allAgreementsState, signupState, birthdayState } from "../../recoil/singup";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../apis/User";
+import { authSignUp } from "../../apis/auth";
 
 const TermsOfService = () => {
     const isActive = useRecoilValue(allAgreementsState);
@@ -19,23 +19,22 @@ const TermsOfService = () => {
       phone: fomattedPhone,
       birthDate: `${birthdayInfo.year}-${birthdayInfo.month}-${birthdayInfo.day}`,
     };
-
-    console.log(typeof(signupInfo.password));
-    const onClickBtn = () =>{
-      console.log(requestData);
-      axiosInstance.post('/auth/sign-up', requestData)
-    .then(res => {
-      // 요청 성공 시 처리할 로직
-      console.log(res)
-    })
-    .catch(err => {
-      // 요청 실패 시 처리할 로직
-      console.error(err);
-    });
-    }
     const navigate = useNavigate()
     const onClickBackBtn = () =>{
         navigate(-1);
+    }
+
+    console.log(typeof(signupInfo.password));
+    const onClickBtn = async() =>{
+      console.log(requestData);
+      navigate('/login');
+    try {
+      const response = await authSignUp(requestData);
+      console.log('회원가입 성공', response);
+  } catch (error) {
+      console.error('회원가입 실패:', error);
+      // 에러 처리 로직
+  }
     }
   return (
     <Wrapper>
