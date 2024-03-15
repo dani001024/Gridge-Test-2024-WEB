@@ -8,7 +8,6 @@ import Button from "../Button";
 import KakaoLogin from "../KakaoLogin";
 import { Link } from "react-router-dom";
 import { authSignIn } from "../../apis/auth";
-import { userProfile } from "../../apis/User";
 
 interface ValueType {
   loginId: string;
@@ -21,12 +20,9 @@ const Login = () => {
     password: "",
   });
   const onClickLoginButton = async () => {
-    console.log(values);
     try {
         const response = await authSignIn(values);
-        console.log('토큰:', response.result.jwt);
-        localStorage.setItem('jwt', response.result.jwt)
-        // 로그인 성공 시 처리 로직
+        console.log('토큰?', response);
     } catch (error) {
         console.error('Error while signing in:', error);
         // 에러 처리 로직
