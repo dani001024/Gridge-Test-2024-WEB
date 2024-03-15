@@ -1,30 +1,35 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+
 
 export const Header = styled.div`
-  background-color: red;
+  width:100vw;
+  height:80px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.06);
+  justify-content: space-around;
 
-  margin: 1rem;
-  padding: 1rem;
+  // margin: 1rem;
+  // padding: 1rem;
+/
 `;
 
+export const Img = styled.img`
+  width:140px;
+  height:50px;
+  padding : 0 100px;
+`;
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
-  background-color: green;
   margin-left: 5rem;
   margin-right: 5rem;
+  gap : 5px;
 `;
 
-export const HeaderText = styled.p`
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: white;
-  font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+export const InputWrapper = styled.div`
+width:35%; 
 `;
 
 export const Button = styled.div`
@@ -39,3 +44,20 @@ export const Button = styled.div`
   text-align: center;
   cursor: pointer;
 `;
+export const NavStyle = styled(NavLink)`
+color: #999999;
+padding: 5px;
+margin: 5px;
+text-decoration: none;
+transition: color 0.5s;
+width: 24px;
+
+svg {
+  width: 24px;
+  height: 24px;
+}
+
+&.active {
+  color: #101828;
+}
+`

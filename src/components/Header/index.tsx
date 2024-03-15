@@ -1,59 +1,36 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import packageJson from "../../../package.json";
-import { Button, Header, HeaderText, Wrap } from "./styles";
+import React, { useState } from "react";
+// import { Link, useNavigate } from "react-router-dom";
+// import packageJson from "../../../package.json";
+import { Header, Wrap,NavStyle,Img,InputWrapper } from "./styles";
+import logo from "../../assets/mainlogo.png"
+import search from "../../assets/search.png"
+import { FiHome,FiPlusSquare } from "react-icons/fi";
+import { FaRegHeart } from "react-icons/fa";
+import { LuSend } from "react-icons/lu";
+import Input from "../Input";
 
 const AppHeader = () => {
-  const navigate = useNavigate();
-
-  // const dispatch = useDispatch()
-  // const sidebarShow = useSelector((state) => state.sidebarShow)
-  // const [visible, setVisible] = useState(false)
-
+  const [value, setValue] = useState('')
+  const handleChange = ()=>{
+    setValue('')
+  }
   return (
     <Header>
+          <Img src={logo} alt='로고'/>
+          <InputWrapper>
+          <Input
+          name="search"
+          placeholder="검색"
+          type="email"
+          image={search}
+          value={value}
+          onChange={handleChange}/></InputWrapper>
+
       <Wrap>
-        <svg width={30}>
-          <image href="../../assets/neordinary-logo.svg" />
-        </svg>
-        <HeaderText>
-          {process.env.REACT_APP_ENV !== "production" ? (
-            <>
-              REACT_APP_ENV : ${process.env.REACT_APP_ENV}
-              <br />
-              REACT_APP_API : ${process.env.REACT_APP_API}
-              <br />
-              프로젝트 : ${packageJson.name}
-              <br />
-              설명 : ${packageJson.description}
-              <br />
-              버전 : ${packageJson.version}
-            </>
-          ) : (
-            ""
-          )}
-        </HeaderText>
-      </Wrap>
-      <Wrap>
-        <Link to="/login">
-          <Button>로그아웃</Button>
-        </Link>
-        <Button
-          onClick={() => {
-            // replace true 는 뒤로가기시 이전 페이지로 안가짐
-            navigate("/dashboard", { replace: true });
-          }}
-        >
-          대시보드로 화면 전환
-        </Button>
-        <Button
-          onClick={() => {
-            // replace false (혹은 생략) 는 뒤로가기시 이전 페이지 가짐
-            navigate("/");
-          }}
-        >
-          홈
-        </Button>
+      <NavStyle to="/"><FiHome /></NavStyle>
+      <NavStyle to="/"><LuSend /></NavStyle>        
+      <NavStyle to="/"><FiPlusSquare /></NavStyle>
+      <NavStyle to="/payPage"><FaRegHeart /></NavStyle>
       </Wrap>
     </Header>
   );
