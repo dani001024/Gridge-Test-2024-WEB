@@ -26,6 +26,7 @@ export const Title = styled.h4`
 `;
 export const Wrapper = styled.div`
     display:flex;
+    background-color:white;
     flex-direction : column;
     align-items :center;
     gap : 10px;

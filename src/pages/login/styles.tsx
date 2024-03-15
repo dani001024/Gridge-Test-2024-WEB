@@ -54,8 +54,9 @@ export const Container = styled.div`
   display :flex;
   flex-direction : column;
   align-items:center;
+  justify-content: space-between;
   gap:6px;
-  width : 35vw;
+  height:90%;
   max-width : 416px;
   p{
     font-size:1.3333em;
@@ -72,17 +73,16 @@ background-color:black;
 display:flex;
 padding:1vw 0 ;
 align-items:center;
-width : 100%;
-height : 98vh;
+justify-content : center;
+width : 100vw;
+height : 90vh;
 gap : 20px;
 @media (max-width: 1000px) {
   width : 80vw;
 }
 `
 export const Img = styled.img`
-width : 35vw;
-max-width: 500px;
-
+height : 100%;
 `
 export const ImgWrapper = styled.div`
 display:flex;
