@@ -9,10 +9,6 @@ export const Header = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-
-  // margin: 1rem;
-  // padding: 1rem;
-/
 `;
 
 export const Img = styled.img`
@@ -60,4 +56,14 @@ svg {
 &.active {
   color: #101828;
 }
+`
+export const NavImg = styled.img`
+width: 24px;
+height: 24px;
+border-radius: 70%;
+overflow: hidden;
+object-fit: cover;
+`
+export const Container = styled.div`
+position:relative;
 `
