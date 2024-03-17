@@ -31,6 +31,7 @@ const TermsOfService = () => {
     try {
       const response = await authSignUp(requestData);
       console.log('회원가입 성공', response);
+      localStorage.removeItem('signupInfo');
   } catch (error) {
       console.error('회원가입 실패:', error);
       // 에러 처리 로직
