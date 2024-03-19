@@ -4,7 +4,12 @@ import { IoPersonOutline } from "react-icons/io5";
 import { FaRegBookmark } from "react-icons/fa6";
 import { LuSettings } from "react-icons/lu";
 import { IoAlertCircleOutline } from "react-icons/io5"
+import { useNavigate } from "react-router-dom";
 const Menu =()=>{
+  const navigate = useNavigate()
+  if(!localStorage.getItem("jwt")){
+    navigate('/login');
+  }
   const LogoutBtn = ()=>{
     localStorage.clear();
   }

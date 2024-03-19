@@ -79,7 +79,6 @@ const signup = () => {
         navigate('/signup2');
       }
 
-      // localStorage.setItem('jwt', response.result.jwt)
   } catch (error) {
       console.error('Error while signing in:', error);
       // 에러 처리 로직

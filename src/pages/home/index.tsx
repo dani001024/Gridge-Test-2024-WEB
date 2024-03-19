@@ -1,30 +1,28 @@
-import React from "react";
-import { useRecoilState } from "recoil";
-import { jwtState, nameState } from "../../recoil/login";
-import { HomeRoot, Wrap } from "./styles";
+import React,{useEffect} from "react";
+import {AppContainer, Container} from "./styles"
+import AppHeader from "../../components/Header";
+import Feed from "../../components/Post/Feed";
+import Sidebar from "../../components/Sidebar";
+import Story from "../../components/Story";
+import { useNavigate } from "react-router-dom";
 
-const Home = () => {
-  const [name] = useRecoilState(nameState);
-  const [jwt] = useRecoilState(jwtState);
 
+const HomePage = () => {
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(!localStorage.getItem("jwt")){
+      navigate('/login');
+    }
+  },[])
   return (
-    <HomeRoot>
-      <Wrap>
-        <h4 style={{ color: "white" }}>항상 {name}님을 응원합니다 !</h4>
-      </Wrap>
-      <br />
-      <Wrap>
-        <h5 style={{ color: "white" }}>로그인 여부 : {jwt}</h5>
-      </Wrap>
-      <br />
-      <Wrap>
-        <h4 style={{ color: "white" }}>
-          실제 개발 할 때는 인라인 스타일 보다는 styled-components 를
-          사용해주세요.
-        </h4>
-      </Wrap>
-    </HomeRoot>
+    <AppContainer>
+      <AppHeader />
+      <Container>
+        <Story />
+        <Sidebar />
+      </Container>
+      <Feed />
+    </AppContainer>
   );
 };
-
-export default Home;
+export default HomePage;
