@@ -1,31 +1,4 @@
 import styled from "styled-components";
-import { supportDeviceSize } from "../../components/styles";
-
-export const LoginRoot = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 1080px;
-  height: 100vh;
-  background-color: green;
-
-  @media all and (max-width: ${supportDeviceSize}px) {
-    width: 100vw;
-  }
-`;
-
-export const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  width: 45rem;
-  height: 30rem;
-  padding: 3rem;
-  border: 0.5rem solid yellow;
-  background-color: red;
-`;
 
 export const InputWrap = styled.input`
   display: flex;
@@ -69,13 +42,13 @@ export const Container = styled.div`
 
 `
 export const AppContainer = styled.div`
-background-color:black;
+background-color:#F6F6F6;
 display:flex;
 padding:1vw 0 ;
 align-items:center;
 justify-content : center;
 width : 100vw;
-height : 90vh;
+height : 96vh;
 gap : 20px;
 @media (max-width: 1000px) {
   width : 80vw;
