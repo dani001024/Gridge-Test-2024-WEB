@@ -5,9 +5,10 @@ import Button from '../Button/index';
 import Modal from '../Modal';
 import { useSetRecoilState,useRecoilValue } from 'recoil';
 import { subscribeState } from '../../recoil/subscribe';
+import { relationship } from '../../apis/User';
 
 
-const Payment = () => {
+const Payment = ({ loginId }: { loginId: string }) => {
     const content = useRecoilValue(subscribeState);
     const setSubscribeState = useSetRecoilState(subscribeState);
     const [modal,setModal] = useState(false);
@@ -45,21 +46,26 @@ const Payment = () => {
       };
     
       /* 3. 콜백 함수 정의하기 */
-      function callback(response: RequestPayResponse) {
+      const callback = async (response: RequestPayResponse) => {
         const { success, error_msg } = response;
         console.log(response);
         if (success) {
           alert("결제 성공");
           successPayment();
-          //결제성공 api?
-          console.log("상태바뀜",content);
+          try {
+            const relationshipResponse = await relationship(loginId);
+            console.log(relationshipResponse);
+          } catch (error) {
+            console.error("Error while fetching data:", error);
+            // 에러 처리 로직
+          }
+          console.log("상태바뀜", content);
         } else {
-        //   /alert(`결제 실패: ${error_msg}`);
-        console.log(error_msg);
+          //   /alert(`결제 실패: ${error_msg}`);
+          console.log(error_msg);
           setModal(true);
         }
-      }
-    
+      };
       return (
         <>
          <Button isActive={true} onClick={onClickPayment}>바로 구독 신청하기</Button>
