@@ -1,5 +1,4 @@
 import styled from "styled-components";
-//StoryCircle.tsx
 export const ProfileBox = styled.div`
   display: flex;
   align-items: center;
@@ -71,6 +70,9 @@ export const MoreButton = styled.button`
   font-size: 14px;
 `;
 export const Container = styled.div`
+  // position : absolute;
+  // top : 10px;
+  // right : 30px;
   width : 416px;
   display:flex;
   flex-direction : column;

@@ -2,6 +2,7 @@ import React,{useEffect,useState} from "react";
 import { ProfileBox,P,H3,Wrap,H5,H4,StyledButton,Container} from "./styles";
 import * as S from './styles';
 import example from "../../assets/example.png"
+import sample from "../../assets/sample_profile.jpg"
 import { userProfile } from "../../apis/User";
 
 interface UserProfile {
@@ -33,13 +34,13 @@ const AppSidebar = () => {
   
       fetchData();
     }, []);
-    // if (!profile) {
-    //   return <div>Loading...</div>;
-    // }
+    if (!profile) {
+      return <div>Loading...</div>;
+    }
   return (
     <Container>
       <ProfileBox>
-        <S.Img src={example} />
+        <S.Img src={sample} />
         <div>
           <H3>loginId</H3>
           <P>소개</P>

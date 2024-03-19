@@ -10,6 +10,7 @@ export const ImageContainer = styled.div`
   display: flex;
   transition: 0.6s;
   flex-shrink: 0;
+
 `;
 
 export const Image = styled.div`
@@ -18,6 +19,7 @@ export const Image = styled.div`
   background-size: cover;
   background-position: center center;
   flex-shrink: 0;
+  border-radius: 10px 10px 0px 0px;
 `;
 
 export const Left = styled.span`

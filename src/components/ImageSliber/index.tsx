@@ -25,25 +25,32 @@ const ImageSlider: React.FC<Props> = ({ images }) => {
         setSelected(index + 1);
       };
   
-    return (<>
-      <Wrapper>
-        <Left onClick={pre} className={selected === 1 ? 'hidden' : ''}>
-          <FaChevronCircleLeft />
-        </Left>
-        <ImageContainer style={{ transform: `translate(-${(selected - 1) * 520}px, 0px)` }}>
-          {images.map((image, index) => (
-            <Image key={index} style={{ backgroundImage: `url(${image})` }} />
+    return (
+      <>
+        <Wrapper>
+          <Left onClick={pre} className={selected === 1 ? "hidden" : ""}>
+            <FaChevronCircleLeft />
+          </Left>
+          <ImageContainer
+            style={{ transform: `translate(-${(selected - 1) * 520}px, 0px)` }}
+          >
+            {images.map((image, index) => (
+              <Image key={index} style={{ backgroundImage: `url(${image})` }} />
+            ))}
+          </ImageContainer>
+          <Right onClick={next} className={selected === length ? "hidden" : ""}>
+            <FaChevronCircleRight />
+          </Right>
+        </Wrapper>
+        <PageIndicator>
+          {images.map((_, index) => (
+            <PageDot
+              key={index}
+              isSelected={index + 1 === selected}
+              onClick={() => handleDotClick(index)}
+            />
           ))}
-        </ImageContainer>
-        <Right onClick={next} className={selected === length ? 'hidden' : ''}>
-          <FaChevronCircleRight />
-        </Right>
-      </Wrapper>
-      <PageIndicator>
-        {images.map((_, index) => (
-          <PageDot key={index} isSelected={index + 1 === selected}  onClick={() => handleDotClick(index)}/>
-        ))}
-      </PageIndicator>
+        </PageIndicator>
       </>
     );
   };

@@ -24,7 +24,8 @@ export const StoryWrapper = styled.div`
 display: flex;
 justify-content: start;
 align-items: center; 
-width :520px;
+width :486px;
+max-width:520px;
 height:130px;
 border: 1px solid rgba(204, 204, 204, 1);
 border-radius:10px;
@@ -32,6 +33,7 @@ padding : 0 15px;
 gap : 10px;
 overflow-x: auto;
 white-space: nowrap;
+background-color:white;
 
 ::-webkit-scrollbar {
     width: 1px; /* 스크롤바의 너비 */

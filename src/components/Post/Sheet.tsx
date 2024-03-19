@@ -20,21 +20,20 @@ interface Props {
   const Sheet: React.FC<Props> = ({ isLiked, isBookMarked, feedText,feedId ,feedLoginId,onclick,onClickComment,numberOfComments}) => {
     const [feedLikeResponse, setFeedLikeResponse] = useState<boolean>(isLiked);
     const [feedBookMarkedResponse, setIsMarked] = useState<boolean>(isBookMarked);
-    // const [showMore, setShowMore] = useState(false);
     const onclickLike = async () => {
       console.log(isBookMarked, feedText, isLiked);
       try {
         const response = await feedLike(feedId);
-        setFeedLikeResponse(response.isLiked);
+        setFeedLikeResponse(response.result.isLiked);
+        console.log(response.result)
       } catch (error) {
         console.error("Error while signing in:", error);
       }
     };
     const onclickMark = async () => {
-      setIsMarked((prev) => !prev);
       try {
         const response = await feedBookmarked(feedId);
-        setFeedLikeResponse(response.isBookMarked);
+        setIsMarked(response.result.isBookMarked);
       } catch (error) {
         console.error("Error while signing in:", error);
       }
@@ -58,7 +57,7 @@ interface Props {
         <Row>
           <Reaction>
             {feedLikeResponse ? <AiFillHeart className="fill" onClick={onclickLike} /> : <AiOutlineHeart onClick={onclickLike}/>}
-            <LuMessageCircle />
+            <LuMessageCircle onClick={onClickComment}/>
           </Reaction>
           {feedBookMarkedResponse ? <IoBookmark onClick={onclickMark}/> : <IoBookmarkOutline onClick={onclickMark}/>}
         </Row>
